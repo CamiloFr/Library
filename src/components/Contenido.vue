@@ -9,10 +9,11 @@
         <h1>Colección de las opciones de grado de la Universidad de los Llanos</h1>
         <img src="../assets/Images/Image2.jpg">
         <div class="boton">
-          <vs-button color="danger" type="line" icon="book"><router-link to="/colecciones">VER MAS</router-link></vs-button>
+          <router-link to="/colecciones"><vs-button color="danger" type="line" icon="book">VER MAS</vs-button></router-link>
         </div>
       </div>
     </div>
+    <router-view/>
   </div>
 </template>
 

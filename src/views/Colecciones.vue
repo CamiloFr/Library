@@ -1,21 +1,27 @@
 <template lang="html">
-  <div class="con-example-images">
-    <vs-images>
-        <vs-image src="@/assets/Images/FCE.jpg" />
-        <vs-image src="@/assets/Images/FCBI.jpg" />
-    </vs-images>
+  <div class="contenedor-images">
+      <div class="images">
+      <img src="../assets/Images/FCARN.jpg" />
+      <img src="../assets/Images/FCE.jpg" />
+      <img src="../assets/Images/FCBI.jpg" />
+      <img src="../assets/Images/FCHYE.jpg" />
+      <img src="../assets/Images/FCS.jpg" />
+  </div>
   </div>
 </template>
 
 <script>
 export default {
- 
+
 }
 </script>
 
 <style lang="stylus">
-.con-example-images
+.images
+  overflow auto
+.contenedor-images
   margin-top 60px
-  max-height 500px
-//   overflow auto
+  background #fcfaf8
+  padding-top 2%
+  padding-bottom 2%
 </style>
