@@ -71,14 +71,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 0px;
   display: flex;
-}
-
-body {
-  background-image: url('assets/Images/Image3.png');
-  background-repeat: no-repeat;
-  position: relative;
+  width: 100vw; 
+  height: 100vh; 
 }
 
 .user {
@@ -121,6 +116,7 @@ body {
 
 .content2 {
   background: #fcfaf8;
+  height: 100%;
 }
 
 li .vs-navbar--item .is-active-item .vs-navbar-item-danger {
@@ -129,7 +125,9 @@ li .vs-navbar--item .is-active-item .vs-navbar-item-danger {
 
 .content1 {
   background: #393d42;
-  width: 20%;
+  max-width: 200px;
+  min-width: 100px;
+  height: 100%;
 }
 
 .content1 .nabarx .vs-con-items {
