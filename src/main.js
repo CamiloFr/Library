@@ -6,8 +6,10 @@ import store from './store'
 
 import 'material-icons/iconfont/material-icons.css';
 import 'vuesax/dist/vuesax.css' //Vuesax styles
+import Firebase from 'firebase'
 
-Vue.use(Vuesax)
+Vue.use(Vuesax);
+Vue.use(Firebase);
 
 new Vue({
   router,

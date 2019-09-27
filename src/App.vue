@@ -30,6 +30,12 @@
             <a href="#">Información</a>
           </router-link>
         </vs-navbar-item>
+        <vs-navbar-item index="4">
+          <router-link to="/addcolecciones">
+            <i class="material-icons">unarchive</i>
+            <a href="#">Subir Colecciones</a>
+          </router-link>
+        </vs-navbar-item>
       </vs-navbar>
     </div>
     <div class="content2">
@@ -53,14 +59,25 @@
     </div>
   </div>
 </template>
+
 <script>
+import Firebase from "firebase";
+// import db from '@/firebase'
+import LinksRef from '@/firebase'
+
 export default {
   data: () => ({
     activeItem: 1,
     type: "gradient",
     image: "https://avatars2.githubusercontent.com/u/31676496?s=460&v=4",
     badge: 1
-  })
+  }),
+  methods: {
+    addLink: function () {
+      window.console.log("addLink");
+      window.console.log(this.newLink.title);
+    }
+  },
 };
 </script>
 
@@ -72,8 +89,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  width: 100vw; 
-  height: 100vh; 
+  width: 100vw;
+  height: 100vh;
 }
 
 .user {
@@ -117,6 +134,7 @@ export default {
 .content2 {
   background: #fcfaf8;
   height: 100%;
+  width: 100%;
 }
 
 li .vs-navbar--item .is-active-item .vs-navbar-item-danger {
