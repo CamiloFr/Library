@@ -11,7 +11,6 @@
           icon="search"
           placeholder="Busque la alternativa a su investagación"
           v-model="newLink.title"
-          @keypress.13.prevent="addLink"
         />
       </div>
       <div class="content3">
@@ -31,9 +30,9 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+// import firebase from 'firebase'
 // import db from '@/firebase'
-import LinksRef from '@/firebase'
+// import LinksRef from '@/firebase'
 // import Firebase from "firebase";
 // var firebaseConfig = {
 //   apiKey: "AIzaSyD8V1blF66w1_OqNuaWbX0bz7qz0TmjLo0",
@@ -52,9 +51,9 @@ import LinksRef from '@/firebase'
 // let LinksRef = db.ref("links");
 export default{
   name: 'contentpage',
-  firebase: {
-    links: LinksRef
-  }, 
+  // firebase: {
+  //   links: LinksRef
+  // }, 
   data(){
     return{
       newLink:{
@@ -62,12 +61,12 @@ export default{
       }
     }
   },
-  methods: {
-    addLink: function () {
-      window.console.log("addLink");
-      window.console.log(this.newLink.title);
-    }
-  }
+  // methods: {
+  //   addLink: function () {
+  //     window.console.log("addLink");
+  //     window.console.log(this.newLink.title);
+  //   }
+  // }
 }
 </script>
 

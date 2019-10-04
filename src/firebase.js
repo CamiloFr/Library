@@ -10,8 +10,8 @@ var firebaseConfig = {
   measurementId: "G-X7SZPM8DE9"
 };
 // Initialize Firebase
-let app = Firebase.initializeApp(firebaseConfig);
-let db = app.database();
+const app = Firebase.initializeApp(firebaseConfig);
+const db = app.database();
 // Firebase.analytics();
-let LinksRef = db.ref("links");
-export default LinksRef;
+const LinksRef = db.ref("links");
+export default {db, Firebase, LinksRef};
