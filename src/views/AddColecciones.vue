@@ -11,24 +11,41 @@
       />
       <vs-input icon="calendar_today" placeholder="Fecha" v-model="newLink.fecha" color="danger" />
     </div>
-    <vs-button color="success" type="filled" v-on:click="addLink">Subir</vs-button>
+    <div class="buttons">
+      <vs-button color="success" type="filled" v-on:click="addLink">Subir</vs-button>
+      <vs-button color="danger" type="filled" v-on:click="addLink">Eliminar</vs-button>
+      <vs-button color="warning" type="filled" v-on:click="addLink">Modificar</vs-button>
+    </div>
     <div class="panel-body">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(link, idx) in books" :key="idx">
-            <td>{{link.title}}</td>
-            <td>{{link.autor}}</td>
-            <td>{{link.coleccion}}</td>
-            <td>{{link.fecha}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <vs-table
+        max-items="6"
+        pagination
+        :data="books"
+        description
+        :description-items="descriptionItems"
+        description-title="Registries"
+        description-connector="of"
+        description-body="Pages"
+      >
+        <template slot="header">
+          <h3>Libros</h3>
+        </template>
+        <template slot="thead">
+          <vs-th>Titulo</vs-th>
+          <vs-th>Autor</vs-th>
+          <vs-th>Coleccion</vs-th>
+          <vs-th>Fecha</vs-th>
+        </template>
+
+        <template slot-scope="{data}">
+          <vs-tr :key="indextr" v-for="(tr, indextr) in data">
+            <vs-td :data="data[indextr].title">{{data[indextr].title}}</vs-td>
+            <vs-td :data="data[indextr].autor">{{data[indextr].autor}}</vs-td>
+            <vs-td :data="data[indextr].coleccion">{{data[indextr].coleccion}}</vs-td>
+            <vs-td :data="data[indextr].fecha">{{data[indextr].fecha}}</vs-td>
+          </vs-tr>
+        </template>
+      </vs-table>
     </div>
   </div>
 </template>
@@ -49,12 +66,13 @@ const app = Firebase.initializeApp(firebaseConfig);
 const db = app.database();
 const LinksRef = db.ref("links");
 export default {
-  name: 'informacion',
+  name: "informacion",
   firebase: {
     links: LinksRef
   },
   data: function() {
     return {
+      descriptionItems: [3, 5, 15],
       books: [],
       value2: "",
       value3: "",
@@ -64,7 +82,7 @@ export default {
         autor: "",
         coleccion: "",
         fecha: ""
-      },
+      }
     };
   },
   methods: {
@@ -72,28 +90,28 @@ export default {
       window.console.log("addLink");
       window.console.log(this.newLink);
       LinksRef.push(this.newLink);
-    },
+    }
   },
   created() {
     var app = this;
     var Consulta = LinksRef;
-      Consulta.on("value", function(data) {
-        window.console.log(data.node_.children_.root_.key);
-        data.forEach((child)=>{
-          var children = child.val();
-          window.console.log(child.key, child.val(), children.autor);
-          app.books.push({
-            autor:children.autor,
-            title: children.title,
-            fecha: children.fecha,
-            coleccion: children.coleccion,
-            key: child.key
-          });
+    Consulta.on("value", function(data) {
+      window.console.log(data.node_.children_.root_.key);
+      app.books = [];
+      data.forEach(child => {
+        var children = child.val();
+        window.console.log(child.key, child.val(), children.autor);
+        app.books.push({
+          autor: children.autor,
+          title: children.title,
+          fecha: children.fecha,
+          coleccion: children.coleccion,
+          key: child.key
         });
-        window.console.log(app.books);
       });
-
-  },
+      window.console.log(app.books);
+    });
+  }
 };
 </script>
 <style>
@@ -106,5 +124,15 @@ export default {
   margin-top: 60px;
   display: flex;
   align-self: auto;
+  justify-content: space-between;
+  padding: 0 0 2% 0;
+}
+.buttons{
+  padding: 0 0 2% 0;
+  display: flex;
+  justify-content: space-around;
+}
+.effect {
+  background-color: #db3031;
 }
 </style>
