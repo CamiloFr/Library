@@ -1,6 +1,7 @@
 <template>
   <div class="informacion">
     <div class="inputs">
+      <vs-input icon="line_weight" placeholder="Codigo" v-model="newLink.codigo" color="danger" />
       <vs-input icon="book" placeholder="Tittle" v-model="newLink.title" color="danger" />
       <vs-input icon="face" placeholder="Autor" v-model="newLink.autor" color="danger" />
       <vs-input
@@ -31,6 +32,7 @@
           <h3>Libros</h3>
         </template>
         <template slot="thead">
+          <vs-th>Codigo</vs-th>
           <vs-th>Titulo</vs-th>
           <vs-th>Autor</vs-th>
           <vs-th>Coleccion</vs-th>
@@ -39,6 +41,7 @@
 
         <template slot-scope="{data}">
           <vs-tr :key="indextr" v-for="(tr, indextr) in data">
+            <vs-td :data="data[indextr].title">{{data[indextr].title}}</vs-td>
             <vs-td :data="data[indextr].title">{{data[indextr].title}}</vs-td>
             <vs-td :data="data[indextr].autor">{{data[indextr].autor}}</vs-td>
             <vs-td :data="data[indextr].coleccion">{{data[indextr].coleccion}}</vs-td>
@@ -89,7 +92,13 @@ export default {
     addLink: function() {
       window.console.log("addLink");
       window.console.log(this.newLink);
-      LinksRef.push(this.newLink);
+      // LinksRef.push(this.newLink);
+      db.ref('Libros/' + this.newLink.codigo).set({
+        Author: this.newLink.autor,
+        Coleccion: this.newLink.coleccion,
+        Fecha: this.newLink.fecha,
+        Titulo: this.newLink.title
+      })
     }
   },
   created() {
@@ -127,7 +136,7 @@ export default {
   justify-content: space-between;
   padding: 0 0 2% 0;
 }
-.buttons{
+.buttons {
   padding: 0 0 2% 0;
   display: flex;
   justify-content: space-around;

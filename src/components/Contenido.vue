@@ -74,8 +74,6 @@ export default{
 
 .content3 {
   background: #fcfaf8;
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
 .boton-colecciones {
@@ -83,8 +81,9 @@ export default{
 }
 
 .boton-colecciones img {
-  width: 100%;
+  width: 60%;
   height: 50%;
+  margin: 0 auto;
 }
 
 .boton-colecciones h1 {
@@ -97,8 +96,7 @@ export default{
 
 .busqueda {
   width: 50%;
-  height: auto;
-  margin-left: 25%;
+  margin: 0 auto;
 }
 
 .vs-con-input-label {

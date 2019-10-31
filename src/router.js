@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Colecciones from './views/Colecciones.vue'
 import AddColecciones from './views/AddColecciones.vue'
+import FCARN from './views/FCARN.vue'
+import Pdfviewer from './views/Pdfviewer.vue'
 
 Vue.use(Router)
 
@@ -32,6 +34,16 @@ export default new Router({
       path: '/addcolecciones',
       name: 'addcolecciones',
       component: AddColecciones
+    },
+    {
+      path: '/FCARN',
+      name: 'facultadcarn',
+      component: FCARN
+    },
+    {
+      path: '/PDF',
+      name: 'pdf',
+      component: Pdfviewer
     },
   ]
 })

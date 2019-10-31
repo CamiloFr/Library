@@ -8,10 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "core-js": "^2.6.5",
     "firebase": "^7.0.0",
+    "jquery": "^3.4.1",
     "material-icons": "^0.3.1",
+    "pdfjs": "^2.3.2",
+    "pdfvuer": "^1.4.0",
     "vue": "^2.6.10",
+    "vue-pdf": "^4.0.7",
+    "vue-pdf-cdn": "^1.0.2",
     "vue-router": "^3.0.3",
     "vuefire": "^2.1.2",
     "vuesax": "^3.10.4",

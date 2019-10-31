@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="content1" v-if="seen">
+    <div class="content1" v-if="seen" v-show="esElegido">
       <div class="navbar">
         <div class="tittle">
           <a href="https://www.unillanos.edu.co/">
@@ -35,12 +35,35 @@
         </div>
       </div>
     </div>
-    <div class="content2">
+    <div class="content2" v-show="esElegido">
       <div class="menu-toggle">
         <i class="material-icons" v-on:click="seen = !seen">menu</i>
         <div class="center-title">Universidad de los Llanos</div>
       </div>
       <router-view />
+    </div>
+    <div class="content3" v-show="!esElegido">
+      <div class="contenttitle">
+        <h1>Bienvenido a la alternativa del Respositorio Institucional de la Universidad de los Llanos</h1>
+      </div>
+      <div class="contentcards">
+        <div class="carta" v-on:click="esElegido = !esElegido">
+          <img src="@/assets/Images/Docente.jpg" />
+          <h3>Docente</h3>
+        </div>
+        <div class="carta" v-on:click="esElegido = !esElegido">
+          <img src="@/assets/Images/Estudiante.jpg" />
+          <h3>Estudiante</h3>
+        </div>
+        <div class="carta" v-on:click="esElegido = !esElegido">
+          <img src="@/assets/Images/Funcionario.jpg" />
+          <h3>Funcionario</h3>
+        </div>
+        <div class="carta" v-on:click="esElegido = !esElegido">
+          <img src="@/assets/Images/Egresado.jpg" />
+          <h3>Egresado</h3>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,7 +78,8 @@ export default {
     type: "gradient",
     image: "https://avatars2.githubusercontent.com/u/31676496?s=460&v=4",
     badge: 1,
-    seen: true
+    seen: true,
+    esElegido: false
   }),
   methods: {
     addLink: function() {
@@ -67,10 +91,11 @@ export default {
 </script>
 
 <style lang="stylus">
-body{
+body {
   height: 100vh;
   width: 100%;
 }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -183,6 +208,49 @@ li .vs-navbar--item .is-active-item .vs-navbar-item-danger {
 }
 
 .items .item a {
+  color: #DB3031;
+}
+
+.content3 {
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/Images/background.jpg');
+  background-color: gray;
+  background-blend-mode: screen;
+}
+
+.contenttitle{
+  color: white;
+}
+
+.contentcards {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contentcards .carta {
+  width: 15%;
+  height: 30%;
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+  background-color: gainsboro;
+}
+
+.contentcards .carta img {
+  width: 100%;
+  height: 85%;
+}
+
+.contentcards .carta:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.carta h3 {
   color: #DB3031;
 }
 </style>
