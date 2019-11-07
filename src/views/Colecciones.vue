@@ -11,12 +11,14 @@
         </div>
         <div class="iniline-image2">
             <!-- <img src="../assets/Images/FCE.jpg" /> -->
+            <router-link to="/FCE">
             <div class="letters-image2">
                 Facultad Ciencias Economicas
             </div>
+            </router-link>
         </div>
         <div class="iniline-image3">
-          <router-link to="/">
+          <router-link to="/FCBI">
             <!-- <img src="../assets/Images/FCBI.jpg" /> -->
             <div class="letters-image3">
                 Facultad Ciencias Basicas e Ingenieria
@@ -25,15 +27,19 @@
         </div>
         <div class="iniline-image4">
             <!-- <img src="../assets/Images/FCHYE.jpg" /> -->
+            <router-link to="/FCHyE">
             <div class="letters-image4">
                 Facultad Ciencias Humanas y de la Educacion
             </div>
+            </router-link>
         </div>
         <div class="iniline-image5">
             <!-- <img src="../assets/Images/FCS.jpg" /> -->
+            <router-link to="/FCS">
             <div class="letters-image5">
                 Facultad Ciencias de la Salud
             </div>
+            </router-link>
         </div>
     </div>
     <router-view />
@@ -65,11 +71,14 @@ export default {};
     color: white;
 }
 
-.iniline-image1 .letters-image1 {
+.iniline-image1 a{
     display: flex;
     align-self: center;
     font-weight: bold;
+    text-decoration: none;
+    color: white;
 }
+
 
 .iniline-image1:hover {
     background-color: rgba(10, 10, 10, 0.4);
@@ -88,10 +97,11 @@ export default {};
     color: white;
 }
 
-.iniline-image2 .letters-image2 {
+.iniline-image2 a{
     display: flex;
     align-self: center;
     font-weight: bold;
+    color: white;
 }
 
 .iniline-image2:hover {
@@ -111,10 +121,11 @@ export default {};
     color: white;
 }
 
-.iniline-image3 .letters-image3 {
+.iniline-image3 a {
     display: flex;
     align-self: center;
     font-weight: bold;
+    color: white;
 }
 
 .iniline-image3:hover {
@@ -134,10 +145,11 @@ export default {};
     color: white;
 }
 
-.iniline-image4 .letters-image4 {
+.iniline-image4 a {
     display: flex;
     align-self: center;
     font-weight: bold;
+    color: white;
 }
 
 .iniline-image4:hover {
@@ -157,10 +169,11 @@ export default {};
     color: white;
 }
 
-.iniline-image5 .letters-image5 {
+.iniline-image5 a {
     display: flex;
     align-self: center;
     font-weight: bold;
+    color: white;
 }
 
 .iniline-image5:hover {

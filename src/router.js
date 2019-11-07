@@ -4,6 +4,10 @@ import Home from './views/Home.vue'
 import Colecciones from './views/Colecciones.vue'
 import AddColecciones from './views/AddColecciones.vue'
 import FCARN from './views/FCARN.vue'
+import FCS from './views/FCS.vue'
+import FCBI from './views/FCBI.vue'
+import FCE from './views/FCE.vue'
+import FCHyE from './views/FCHyE.vue'
 
 Vue.use(Router)
 
@@ -38,6 +42,26 @@ export default new Router({
       path: '/FCARN',
       name: 'facultadcarn',
       component: FCARN
+    },
+    {
+      path: '/FCE',
+      name: 'facultadceco',
+      component: FCE
+    },
+    {
+      path: '/FCS',
+      name: 'facultadcsal',
+      component: FCS
+    },
+    {
+      path: '/FCBI',
+      name: 'facultadcbas',
+      component: FCBI
+    },
+    {
+      path: '/FCHyE',
+      name: 'facultadchum',
+      component: FCHyE
     },
   ]
 })

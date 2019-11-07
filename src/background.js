@@ -12,14 +12,21 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let win
 
 // Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([{scheme: 'app', privileges: { secure: true, standard: true } }])
+protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600, webPreferences: {
-    nodeIntegration: true
-  } })
+  win = new BrowserWindow(
+    {
+      minwidth: 800,
+      minheight: 600,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    }
+  )
 
+  win.maximize();
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
@@ -89,7 +96,7 @@ if (isDevelopment) {
 }
 const ipc = require('electron').ipcMain;
 var path = require('path');
-function secondwindow(data){
+function secondwindow(data) {
   let winpdf
   console.log(data);
   winpdf = new BrowserWindow({
@@ -100,8 +107,9 @@ function secondwindow(data){
       plugins: true
     }
   })
+  winpdf.maximize();
   winpdf.webContents.openDevTools();
-  winpdf.loadFile('C:\\Users\\CamiloFr\\Documents\\GitHub\\Library\\src\\assets\\window\\html\\window.html');
+  winpdf.loadFile('../src/assets/window/html/window.html');
   winpdf.webContents.on('did-finish-load', () => {
     // let pdf = path.join('C:\\Users\\CamiloFr\\Documents\\GitHub\\Library\\src\\assets\\pdf', data);
     winpdf.webContents.send('finish', data);
