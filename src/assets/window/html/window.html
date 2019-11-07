@@ -1,0 +1,36 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PDF</title>
+</head>
+
+<body>
+    <div id="pdf-container">
+            <embed src="../../../assets/pdf/000001.pdf" type="application/pdf" width="100%" height="600px" />
+    </div>
+    <script src="../js/window.js"></script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizador PDF</title>
+</head>
+
+<body style="background-color: #393d42;">
+    <div class="encabezado" style="margin: 0 auto; width: 10%; height: 10%; display: flex; padding-bottom: 20px;">
+        <button id="ant" style="background-color: #DB3031; color: white; border-style: hidden; cursor: pointer; margin-right: 10px;">Anterior</button>
+        <button id="sig" style="background-color: #DB3031; color: white; border-style: hidden; cursor: pointer; margin-left: 10px;">Siguiente</button>
+    </div>
+    <canvas id="the-canvas" style="border:1px  solid black; margin: 0 auto; display: flex;"></canvas>
+
+    <script src="../../../../node_modules/pdfjs-dist/build/pdf.js"></script>
+    <script src="../js/window.js"></script>
+</body>
+</html>

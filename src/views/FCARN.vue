@@ -12,18 +12,22 @@
                     <h3>Libros</h3>
                 </template>
                 <template slot="thead">
+                    <vs-th>Codigo</vs-th>
                     <vs-th>Titulo</vs-th>
                     <vs-th>Autor</vs-th>
                     <vs-th>Coleccion</vs-th>
                     <vs-th>Fecha</vs-th>
+                    <vs-th>Link</vs-th>
                 </template>
 
                 <template slot-scope="{data}">
                     <vs-tr :key="indextr" v-for="(tr, indextr) in data">
+                        <vs-td :data="data[indextr].key">{{data[indextr].key}}</vs-td>
                         <vs-td :data="data[indextr].title">{{data[indextr].title}}</vs-td>
                         <vs-td :data="data[indextr].autor">{{data[indextr].autor}}</vs-td>
                         <vs-td :data="data[indextr].coleccion">{{data[indextr].coleccion}}</vs-td>
                         <vs-td :data="data[indextr].fecha">{{data[indextr].fecha}}</vs-td>
+                        <vs-td :data="data[indextr].key"><a id="nuevaventana" v-on:click="enviodata">{{data[indextr].key}}</a></vs-td>
                     </vs-tr>
                 </template>
             </vs-table>
@@ -34,6 +38,8 @@
 
 <script>
 import firebase from "firebase";
+const ipc = require('electron').ipcRenderer;
+
 var secondconfig = {
     apiKey: "AIzaSyD8V1blF66w1_OqNuaWbX0bz7qz0TmjLo0",
     authDomain: "library-a03ee.firebaseapp.com",
@@ -83,6 +89,13 @@ export default {
             });
             window.console.log(app.books);
         });
+    },
+    methods: {
+        enviodata: function (event) {
+            window.console.log(event)
+            window.console.log(event.toElement.innerText);
+            ipc.send('another', event.toElement.innerText);
+        }
     }
 };
 </script>
@@ -98,31 +111,32 @@ export default {
 }
 
 .facultad span {
-font: 700 4em/1 "Oswald", sans-serif;
-letter-spacing: 0;
-padding: .25em 0 .325em;
-display: block;
-margin: 0 auto;
-text-shadow: 0 0 80px rgba(255, 255, 255, .5);
-background: url('../assets/Images/FCARNfacultad2.png') repeat-y;
--webkit-background-clip: text;
-background-clip: text;
--webkit-text-fill-color: transparent;
--webkit-animation: aitf 50s linear infinite;
--webkit-transform: translate3d(0, 0, 0);
--webkit-backface-visibility: hidden;
+    font: 700 4em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, .5);
+    background: url('../assets/Images/FCARNfacultad2.png') repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 50s linear infinite;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
 }
 
 @-webkit-keyframes aitf {
-0% {
-   background-position: 0% 50%;
-  }
-100% {
-    background-position: 100% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .vs-table--header {
-justify-content: center !important;
+    justify-content: center !important;
 }
 </style>
