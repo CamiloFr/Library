@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, globalShortcut } from 'electron'
 import {
   createProtocol,
   installVueDevtools
@@ -96,6 +96,7 @@ if (isDevelopment) {
 }
 const ipc = require('electron').ipcMain;
 var path = require('path');
+ const electronLocalshortcut = require('electron-localshortcut');
 function secondwindow(data) {
   let winpdf
   console.log(data);
@@ -114,8 +115,17 @@ function secondwindow(data) {
     // let pdf = path.join('C:\\Users\\CamiloFr\\Documents\\GitHub\\Library\\src\\assets\\pdf', data);
     winpdf.webContents.send('finish', data);
   })
+  const ret = globalShortcut.register('PrintScreen', () => {
+    console.log('tecla print');
+    globalShortcut.unregister('PrintScreen');
+    winpdf.destroy();
+  })
+  const ret = globalShortcut.register('Alt+PrintScreen', () => {
+    console.log('tecla print');
+    globalShortcut.unregister('Alt+PrintScreen');
+    winpdf.destroy();
+  })
 }
-
 ipc.on('another', (e, m) => {
   console.log(m);
   secondwindow(m);

@@ -91,3 +91,10 @@ $('#sig').on('click', function() {
 $('#ant').on('click', function() {
     anteriorpag();
 })
+
+$(window).on('keypress', function(e){
+    console.debug(e.keyCode);
+    if (e.keyCode == 44){
+        alert('no tomes pantallazo putito')
+    }
+})
